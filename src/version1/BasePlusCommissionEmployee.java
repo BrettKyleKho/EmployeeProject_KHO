@@ -1,74 +1,107 @@
 package version1;
 
+import java.util.Locale;
+
 public class BasePlusCommissionEmployee {
     private int empID;
     private String empName;
     private double totalSale;
-    private double totalSalary;
+    private double baseSalary;
 
     public BasePlusCommissionEmployee() {
         this.empID = 0;
         this.empName = "N/A";
         this.totalSale = 0;
-        this.totalSalary = 0;
+        this.baseSalary = 0;
     }
 
     public BasePlusCommissionEmployee(int empID, String empName) {
         this.empID = empID;
         this.empName = empName;
         this.totalSale = 0;
-        this.totalSalary = 0;
+        this.baseSalary = 0;
     }
 
-    public BasePlusCommissionEmployee(int empID, String empName, double totalSale, double totalSalary) {
+    public BasePlusCommissionEmployee(int empID, String empName, double totalSale, double baseSalary) {
         this.empID = empID;
         this.empName = empName;
-        this.totalSale = 0;
-        this.totalSalary = 0;
+        setTotalSale(totalSale);
+        setBaseSalary(baseSalary);
     }
 
     public int getEmpID() {
         return empID;
     }
 
-    public String getEmpName() {
-        return empName;
-    }
-
-    public double getTotalSale() {
-        return totalSale;
-    }
-
-    public double getTotalSalary() {
-        return totalSalary;
-    }
-
     public void setEmpID(int empID) {
         this.empID = empID;
+    }
+
+    public String getEmpName() {
+        return empName;
     }
 
     public void setEmpName(String empName) {
         this.empName = empName;
     }
 
+    public double getTotalSale() {
+        return totalSale;
+    }
+
     public void setTotalSale(double totalSale) {
-        this.totalSale = totalSale;
+        if (totalSale >= 0) {
+            this.totalSale = totalSale;
+        }
     }
 
-    public void setTotalSalary(double totalSalary) {
-        this.totalSalary = totalSalary;
+    public double getBaseSalary() {
+        return baseSalary;
     }
 
-    public double computeSalary(){
-
+    public void setBaseSalary(double baseSalary) {
+        if (baseSalary >= 0) {
+            this.baseSalary = baseSalary;
+        }
     }
 
-    public void displayBasePlusCommissionEmployee(){
+    public double computeSalary() {
+        double commissionRate;
 
+        if (totalSale < 50000) {
+            commissionRate = 0.05;
+        } else if (totalSale < 100000) {
+            commissionRate = 0.10;
+        } else if (totalSale < 500000) {
+            commissionRate = 0.15;
+        } else {
+            commissionRate = 0.20;
+        }
+
+        return baseSalary + (totalSale * commissionRate);
+    }
+
+    public void displayBasePlusCommissionEmployee() {
+        System.out.printf(Locale.US, "ID: %d | Name: %s | Total Sales: ₱%,.2f | Base Salary: ₱%,.2f%n",
+                empID, empName, totalSale, baseSalary);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        double commissionRate;
+
+        if (totalSale < 50000) {
+            commissionRate = 0.05;
+        } else if (totalSale < 100000) {
+            commissionRate = 0.10;
+        } else if (totalSale < 500000) {
+            commissionRate = 0.15;
+        } else {
+            commissionRate = 0.20;
+        }
+
+        return String.format(Locale.US,
+                "BasePlusCommissionEmployee [ID: %d, Name: %s, Total Sales: ₱%,.2f, Base Salary: ₱%,.2f, Commission Rate: %.2f%%, Total Salary: ₱%,.2f]",
+                empID, empName, totalSale, baseSalary, commissionRate * 100, computeSalary());
     }
 }
