@@ -1,28 +1,26 @@
-public class BasePlusCommissionEmployee {
+package version1;
+
+public class CommissionEmployee {
     private int empID;
     private String empName;
     private double totalSale;
-    private double totalSalary;
 
-    public BasePlusCommissionEmployee() {
+    public CommissionEmployee() {
         this.empID = 0;
         this.empName = "N/A";
         this.totalSale = 0;
-        this.totalSalary = 0;
     }
 
-    public BasePlusCommissionEmployee(int empID, String empName) {
+    public CommissionEmployee(int empID,String empName) {
         this.empID = empID;
         this.empName = empName;
         this.totalSale = 0;
-        this.totalSalary = 0;
     }
 
-    public BasePlusCommissionEmployee(int empID, String empName, double totalSale, double totalSalary) {
+    public CommissionEmployee(int empID,String empName, double totalSale) {
         this.empID = empID;
         this.empName = empName;
-        this.totalSale = 0;
-        this.totalSalary = 0;
+        this.totalSale = totalSale;
     }
 
     public int getEmpID() {
@@ -37,10 +35,6 @@ public class BasePlusCommissionEmployee {
         return totalSale;
     }
 
-    public double getTotalSalary() {
-        return totalSalary;
-    }
-
     public void setEmpID(int empID) {
         this.empID = empID;
     }
@@ -53,15 +47,11 @@ public class BasePlusCommissionEmployee {
         this.totalSale = totalSale;
     }
 
-    public void setTotalSalary(double totalSalary) {
-        this.totalSalary = totalSalary;
-    }
-
     public double computeSalary(){
 
     }
 
-    public void displayBasePlusCommissionEmployee(){
+    public void displayCommissionEmployee(){
 
     }
 

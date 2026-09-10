@@ -1,3 +1,5 @@
+package version1;
+
 public class HourlyEmployee {
     private int empID;
     private String empName;
@@ -58,7 +60,7 @@ public class HourlyEmployee {
     }
 
     public double computeSalary(){
-
+    return 0;
     }
 
     public void displayHourlyEmployee(){
