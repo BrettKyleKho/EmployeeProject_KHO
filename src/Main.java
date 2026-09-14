@@ -1,3 +1,5 @@
+package version 1;
+
 import version1.BasePlusCommissionEmployee;
 import version1.CommissionEmployee;
 import version1.PieceWorkerEmployee;

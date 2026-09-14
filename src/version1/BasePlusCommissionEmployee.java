@@ -65,20 +65,20 @@ public class BasePlusCommissionEmployee {
         }
     }
 
-    public double computeSalary() {
-        double commissionRate;
-
+    private double getCommissionRate() {
         if (totalSale < 50000) {
-            commissionRate = 0.05;
+            return 0.05;
         } else if (totalSale < 100000) {
-            commissionRate = 0.10;
+            return 0.10;
         } else if (totalSale < 500000) {
-            commissionRate = 0.15;
+            return 0.15;
         } else {
-            commissionRate = 0.20;
+            return 0.20;
         }
+    }
 
-        return baseSalary + (totalSale * commissionRate);
+    public double computeSalary() {
+        return baseSalary + (totalSale * getCommissionRate());
     }
 
     public void displayBasePlusCommissionEmployee() {
@@ -88,17 +88,7 @@ public class BasePlusCommissionEmployee {
 
     @Override
     public String toString() {
-        double commissionRate;
-
-        if (totalSale < 50000) {
-            commissionRate = 0.05;
-        } else if (totalSale < 100000) {
-            commissionRate = 0.10;
-        } else if (totalSale < 500000) {
-            commissionRate = 0.15;
-        } else {
-            commissionRate = 0.20;
-        }
+        double commissionRate = getCommissionRate();
 
         return String.format(Locale.US,
                 "BasePlusCommissionEmployee [ID: %d, Name: %s, Total Sales: ₱%,.2f, Base Salary: ₱%,.2f, Commission Rate: %.2f%%, Total Salary: ₱%,.2f]",
